@@ -2,6 +2,6 @@ CS364
 Spring 2026
 Homework 4
 
-Name:
+Name: mark alano
 
-Doc Stmt:
+Doc Stmt: citations are on site

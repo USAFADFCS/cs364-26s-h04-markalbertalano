@@ -24,13 +24,28 @@ function wait(ms) {
 
 // Step 1: Get ingredients
 function getIngredients() {
-  // TODO:
+  // TODO: 
   // 1. Show message: "Gathering ingredients..."
   // 2. Wait 2 seconds using wait()
   // 3. Resolve with "Ingredients ready"
 
   return new Promise((resolve, reject) => {
     // Your code here
+    const output = document.getElementById("output");
+
+    //doc stmt: https://www.w3schools.com/jsref/prop_node_textcontent.asp for showing on website
+    output.textContent = "Gathering ingredients...";
+
+    //doc stmt: https://stackoverflow.com/questions/66934373/how-then-method-actually-works-in-javascript for then logic
+
+    wait(2000).then(() => {
+
+      //doc stmt: used https://www.w3schools.com/js/js_htmldom_html.asp to figure out tabbing problems
+      output.innerHTML += ("<p>Ingredients ready<p/>");
+      resolve("Ingredients ready");
+
+    }).catch(reject);
+
   });
 }
 
@@ -44,6 +59,8 @@ function blendSmoothie() {
 
   return new Promise((resolve, reject) => {
     // Your code here
+
+
   });
 }
 
@@ -56,6 +73,8 @@ function pourSmoothie() {
 
   return new Promise((resolve, reject) => {
     // Your code here
+
+
   });
 }
 
