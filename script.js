@@ -129,4 +129,17 @@ async function makeSmoothieAsync() {
   // await pourSmoothie()
   // Show final success message
   // Catch and display any errors
+  try{
+
+    await getIngredients();
+    await blendSmoothie();
+    await pourSmoothie();
+
+  }
+  catch(reject){
+
+    showMessage("KABLOW");
+    
+  }
+
 }
