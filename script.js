@@ -31,17 +31,13 @@ function getIngredients() {
 
   return new Promise((resolve, reject) => {
     // Your code here
-    const output = document.getElementById("output");
 
-    //doc stmt: https://www.w3schools.com/jsref/prop_node_textcontent.asp for showing on website
-    output.textContent = "Gathering ingredients...";
+    showMessage("Gathering ingredients...");
 
     //doc stmt: https://stackoverflow.com/questions/66934373/how-then-method-actually-works-in-javascript for then logic
-
     wait(2000).then(() => {
 
-      //doc stmt: used https://www.w3schools.com/js/js_htmldom_html.asp to figure out tabbing problems
-      output.innerHTML += ("<p>Ingredients ready<p/>");
+      showMessage("Ingredients ready");
       resolve("Ingredients ready");
 
     }).catch(reject);
@@ -60,6 +56,24 @@ function blendSmoothie() {
   return new Promise((resolve, reject) => {
     // Your code here
 
+    showMessage("Blending smoothie...");
+
+    wait(3000).then(() => {
+
+      //doc stmt: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random for gambling
+      if(Math.random() < .333){
+
+        reject("KABOOOM");
+
+      }
+      else{
+
+        showMessage("Smoothie blended");
+        resolve("Smoothie blended");
+
+      }
+
+    }).catch(reject);
 
   });
 }
@@ -74,6 +88,14 @@ function pourSmoothie() {
   return new Promise((resolve, reject) => {
     // Your code here
 
+    showMessage("Pouring into cup...");
+
+    wait(1000).then(() => {
+
+      showMessage("Smoothie is ready!");
+      resolve("Smoothie is ready!");
+
+    }).catch(reject);
 
   });
 }
@@ -86,11 +108,11 @@ function makeSmoothieWithPromises() {
   outputDiv.innerHTML = ""; // Clear previous messages
 
   // TODO: Chain the steps in order using .then()
-  // getIngredients()
-  //   .then(...)
-  //   .then(...)
-  //   .then(...)
-  //   .catch(...)
+  //doc stmt: https://stackoverflow.com/questions/33469962/javascript-chaining-promises-calling-next-promise-before-previous-has-finished fixed my overlap problem by removing ()
+  getIngredients()
+  .then(blendSmoothie)
+  .then(pourSmoothie)
+  .catch(reject => { showMessage(reject)});
 }
 
 /* =========================
